@@ -1,227 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moo Bot - Effortless AI Conversation</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-        }
-
-        :root {
-            --bg: #0a0a0a;
-            --text: #f5f5f5;
-            --primary: #ff6b6b;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        header {
-            text-align: center;
-            padding: 4rem 0;
-        }
-
-        .logo {
-            width: 120px;
-            height: 120px;
-            background: var(--primary);
-            border-radius: 50%;
-            margin: 0 auto 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            font-weight: bold;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            letter-spacing: -2px;
-        }
-
-        .cta {
-            margin-top: 2rem;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            background: var(--primary);
-            color: var(--text);
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-        }
-
-        section {
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .feature-card {
-            background: rgba(255,255,255,0.05);
-            padding: 2rem;
-            border-radius: 16px;
-            backdrop-filter: blur(10px);
-        }
-
-        .chat-demo {
-            max-width: 600px;
-            margin: 2rem auto;
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-            padding: 1.5rem;
-        }
-
-        .message {
-            margin: 1rem 0;
-            padding: 1rem;
-            border-radius: 8px;
-            animation: messageAppear 0.4s ease;
-        }
-
-        .user-message {
-            background: rgba(255,255,255,0.1);
-            text-align: right;
-            margin-left: 20%;
-        }
-
-        .moo-message {
-            background: var(--primary);
-            margin-right: 20%;
-        }
-
-        footer {
-            margin-top: auto;
-            padding: 2rem;
-            text-align: center;
-            opacity: 0.7;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes messageAppear {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Moo</title>
+  <link rel="icon" href="https://cdn.discordapp.com/avatars/1345476025005510747/f67ce4f73b162f5aced3d9c6d20abc30.png?size=32" type="image/png" />
+  <meta property="og:title" content="Moo Bot">
+  <meta property="og:description" content='A bold bot that only says "moo"'>
+  <meta property="og:image" content="https://cdn.discordapp.com/avatars/1345476025005510747/f67ce4f73b162f5aced3d9c6d20abc30.png?size=256">
+  <meta property="og:url" content="https://moo.kys.lol">
+  <meta name="theme-color" content="#5865f2" />
+  <link rel="stylesheet" href="./css/index.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">MOO</div>
-            <h1>Meet Moo</h1>
-            <p>The zero-interface AI companion</p>
-            <div class="cta">
-                <button class="btn" onclick="window.location.href='#'">Add to Discord</button>
-            </div>
-        </header>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <img src="https://cdn.discordapp.com/avatars/1345476025005510747/f67ce4f73b162f5aced3d9c6d20abc30.png?size=256" alt="Moo Bot Profile">
+      </div>
+      <h1>Moo</h1>
+      <p>A bold bot that only says "moo"</p>
+      <div class="cta">
+        <button class="btn" onclick="interact()">Add to Discord</button>
+      </div>
+    </header>
+  </div>
 
-        <section>
-            <h2>Natural Interaction</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <h3>🗣️ No Commands</h3>
-                    <p>Just talk naturally - Moo understands context automatically</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🧠 Focused Intelligence</h3>
-                    <p>Specialized in essential communication powered by Shapes.inc</p>
-                </div>
-                <div class="feature-card">
-                    <h3>⚡ Instant Zen</h3>
-                    <p>Minimal responses for maximum clarity</p>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Experience Moo</h2>
-            <div class="chat-demo" id="chatDemo">
-                <div class="message moo-message">moo</div>
-                <div class="message user-message">Hello Moo!</div>
-                <div class="message moo-message">moo</div>
-            </div>
-            <button class="btn" id="chatTrigger" style="margin-top: 1rem;">Talk to Moo</button>
-        </section>
-
-        <footer>
-            <p>© 2023 Shapes.inc - Simple by design</p>
-        </footer>
+  <footer>
+    <div class="footer-links">
+      <a href="https://discord.gg/KaPPBdRKdH">Support Server</a>
+      <span>•</span>
+      <a href="https://shapes.inc/privacy">Privacy Policy</a>
+      <span>•</span>
+      <a href="https://shapes.inc/terms">Terms of Service</a>
     </div>
+  </footer>
 
-    <script>
-        const responses = ["moo", "moo!", "moo?", "moo!!", "moo.", "moo~"];
-        let messageCount = 0;
-
-        document.getElementById('chatTrigger').addEventListener('click', () => {
-            const chatDemo = document.getElementById('chatDemo');
-            
-            // Create user message
-            const userMessage = document.createElement('div');
-            userMessage.className = 'message user-message';
-            userMessage.textContent = getRandomMessage();
-            chatDemo.appendChild(userMessage);
-
-            // Create Moo response
-            setTimeout(() => {
-                const mooMessage = document.createElement('div');
-                mooMessage.className = 'message moo-message';
-                mooMessage.textContent = getRandomResponse();
-                chatDemo.appendChild(mooMessage);
-                chatDemo.scrollTop = chatDemo.scrollHeight;
-            }, 500);
-
-            messageCount++;
-            if(messageCount > 4) {
-                chatDemo.querySelectorAll('.message').forEach((msg, index) => {
-                    if(index < 2) msg.style.opacity = '0.3';
-                });
-            }
-        });
-
-        function getRandomResponse() {
-            return responses[Math.floor(Math.random() * responses.length)];
-        }
-
-        function getRandomMessage() {
-            const messages = ["Hi Moo!", "What's up?", "How are you?", "Tell me something", "Any thoughts?", "Moo?"];
-            return messages[Math.floor(Math.random() * messages.length)];
-        }
-    </script>
+  <script src="./js/index.js"></script>
 </body>
 </html>
